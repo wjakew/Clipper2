@@ -5,6 +5,8 @@ all rights reserved
  */
 package com.jakubwawak.clipper;
 
+import java.util.Date;
+
 /**
  *Object for storing data from clipboard
  * @author jakubwawak
@@ -19,6 +21,7 @@ public class Snippet {
     public String raw_data;
     public Classifier classifier;
     public String note;
+    public Date obj_time;
     
     
     /**
@@ -29,6 +32,7 @@ public class Snippet {
         raw_data = data;
         classifier = new Classifier(this);
         note = "";
+        obj_time = new Date();
     }
     
     
@@ -43,4 +47,18 @@ public class Snippet {
         return raw_data;
     }
     
+    /**
+     * Function for coping snippet ti clipboard
+     * @return String
+     */
+    public String snippet_clip(){
+        String data = "CLIP2-DATA\n";
+        
+        data = data+raw_data + "\n--------\n";
+        data = data+note+"\n";
+        data = data+classifier.CLASS_CODE+"\n";
+        data = data+obj_time.toString()+"\nEND.";
+        
+        return data;
+    }
 }

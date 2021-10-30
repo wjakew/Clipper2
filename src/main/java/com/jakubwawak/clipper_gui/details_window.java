@@ -7,6 +7,9 @@ package com.jakubwawak.clipper_gui;
 
 import com.jakubwawak.clipper.Snippet;
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 /**
  *Object for creating details window
@@ -99,12 +102,17 @@ public class details_window extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(textarea_data);
 
-        combobox_action.setBackground(java.awt.Color.darkGray);
+        combobox_action.setBackground(java.awt.Color.gray);
         combobox_action.setForeground(new java.awt.Color(0, 0, 0));
-        combobox_action.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Actions...", "Change category", "Edit data", "Send by email", "Copy snippet", "Remove", "Close" }));
+        combobox_action.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Actions...", "Change category", "Edit data", "Send by email", "Copy snippet", "Close" }));
         combobox_action.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 combobox_actionMouseClicked(evt);
+            }
+        });
+        combobox_action.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combobox_actionActionPerformed(evt);
             }
         });
         combobox_action.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -174,6 +182,16 @@ public class details_window extends javax.swing.JDialog {
          */
         
         switch(combobox_selected){
+            // change category
+            case 1:
+                new category_window(this,true,session_snippet);
+                break;
+            // copy snippet
+            case 4:
+                StringSelection selection = new StringSelection(session_snippet.snippet_clip());
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(selection, selection);
+                break;
             // 6 Close
             case 6:
                 close_action();
@@ -208,6 +226,36 @@ public class details_window extends javax.swing.JDialog {
             close_action();
         }
     }//GEN-LAST:event_textarea_notesKeyPressed
+
+    private void combobox_actionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_actionActionPerformed
+        /**
+         *  0 Actions...
+            1 Change category
+            2 Edit data +
+            3 Send by email
+            4 Copy snippet +
+            5 Close
+         */
+        switch(combobox_action.getSelectedIndex()){
+            // close
+            case 5:
+                close_action();
+                break;
+            // edit data
+            case 2:
+                textarea_data.setEditable(true);
+                break;
+            // copy snippet
+            case 4:
+                StringSelection selection = new StringSelection(session_snippet.snippet_clip());
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(selection, selection);
+                break;
+            default:
+                close_action();
+                break;
+        }
+    }//GEN-LAST:event_combobox_actionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

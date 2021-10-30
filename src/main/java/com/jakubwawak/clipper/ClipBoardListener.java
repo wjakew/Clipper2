@@ -1,3 +1,8 @@
+/*
+by Jakub Wawak
+kubawawak@gmail.com
+all rights reserved
+ */
 package com.jakubwawak.clipper;
 
 import java.awt.HeadlessException;
@@ -64,12 +69,13 @@ public class ClipBoardListener extends Observable implements Runnable {
                     if (!data.equals(recentContent)) {
                         recentContent = data;
                         // adding data to container
-                        
-                        session_container.add(recentContent);
-                        dlm.addElement(session_container.get_last().get_glance());
-                        
-                        list_object.setModel(dlm);
+                        if ( !recentContent.contains("CLIP2-DATA")){
+                            session_container.add(recentContent);
+                            dlm.addElement(session_container.get_last().get_glance());
 
+                            list_object.setModel(dlm);
+                        }
+                        
                         setChanged();
                         notifyObservers(data);
                     }

@@ -27,6 +27,7 @@ public class Classifier {
      * UNCLASSIFIED
      */
     public String CLASS_CODE;
+    public String[] codes;
     
     /**
      * Constructor
@@ -35,15 +36,33 @@ public class Classifier {
     public Classifier(Snippet snippet){
         raw_snippet = snippet;
         CLASS_CODE = "UNCLASSIFIED";
+        load_codes();
         classify();
+    }
+    
+    /**
+     * Constructor for category window
+     */
+    public Classifier(){
+        load_codes();
+    }
+            
+    /**
+     * Function for loading codes
+     */
+    void load_codes(){
+        codes = new String[] {"EMAIL_ADDRESS","NUMBER"};
     }
     
     /**
      * Function for classification
      */
     void classify(){
-        validator_EMAIL_ADDRESS();
-        validator_NUMBER();
+        if ( validator_EMAIL_ADDRESS() == 1)
+            CLASS_CODE = codes[0];
+        else if ( validator_NUMBER() == 1){
+            CLASS_CODE = codes[1];
+        }
         //validator_INTERNET_LINK();
     }
     
@@ -66,7 +85,7 @@ public class Classifier {
     int validator_NUMBER(){
         String data = raw_snippet.raw_data;
         int data_len = data.length();
-        if ( data.length() < 12 ){
+        if ( data.length() < 14 ){
             for(Character c : data.toCharArray()){
                 try {
                     Integer.parseInt(c.toString());

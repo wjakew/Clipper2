@@ -76,6 +76,9 @@ public class main_window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator1 = new javax.swing.JSeparator();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         list_snippet = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -89,11 +92,14 @@ public class main_window extends javax.swing.JFrame {
         menu_copysnippet = new javax.swing.JMenuItem();
         menu_options = new javax.swing.JMenu();
 
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu2.setText("jMenu2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clipper2");
 
-        list_snippet.setBackground(java.awt.Color.darkGray);
-        list_snippet.setForeground(new java.awt.Color(255, 255, 255));
+        list_snippet.setForeground(new java.awt.Color(255, 255, 0));
         list_snippet.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -106,9 +112,8 @@ public class main_window extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(list_snippet);
 
-        text_newsnippet.setBackground(java.awt.Color.darkGray);
         text_newsnippet.setColumns(20);
-        text_newsnippet.setForeground(new java.awt.Color(255, 255, 255));
+        text_newsnippet.setForeground(new java.awt.Color(255, 255, 51));
         text_newsnippet.setRows(5);
         text_newsnippet.setText("fast snippet...");
         text_newsnippet.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -126,6 +131,7 @@ public class main_window extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(text_newsnippet);
 
+        label_add.setBackground(new java.awt.Color(255, 255, 0));
         label_add.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         label_add.setForeground(new java.awt.Color(255, 255, 255));
         label_add.setText("Add");
@@ -139,6 +145,8 @@ public class main_window extends javax.swing.JFrame {
         jMenuBar1.setForeground(java.awt.Color.darkGray);
         jMenuBar1.setToolTipText("");
 
+        jMenu1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 0));
         jMenu1.setText("Actions");
 
         menu_showdetails.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -161,6 +169,8 @@ public class main_window extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        menu_options.setBackground(new java.awt.Color(102, 102, 102));
+        menu_options.setForeground(new java.awt.Color(255, 255, 0));
         menu_options.setText("Options");
         jMenuBar1.add(menu_options);
 
@@ -173,12 +183,11 @@ public class main_window extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(label_add)
-                        .addGap(0, 36, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_add)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -189,11 +198,12 @@ public class main_window extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(label_add)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 8, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label_add)
+                        .addGap(37, 37, 37))))
         );
 
         pack();
@@ -250,9 +260,12 @@ public class main_window extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label_add;
     private javax.swing.JList<String> list_snippet;
     private javax.swing.JMenuItem menu_copysnippet;

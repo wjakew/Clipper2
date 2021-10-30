@@ -5,6 +5,7 @@ all rights reserved
  */
 package com.jakubwawak.clipper2;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import com.jakubwawak.clipper_gui.main_window;
 
 /**
@@ -14,8 +15,9 @@ import com.jakubwawak.clipper_gui.main_window;
 public class Clipper2 {
     
     static final String version = "1.0.0A1";
-    
+    static final String build_number = "CLIPPER2-301021REV1";
     public static void main(String[] args) {
+        FlatDarkLaf.setup();
         show_header();
         new main_window();
     }
